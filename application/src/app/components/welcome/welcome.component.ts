@@ -31,6 +31,7 @@ export class WelcomeComponent implements OnInit {
   // these variables are the configs of the quiz
   whisperLen = [2, 5, 10];
   timeLimit = [20, 40];
+  questionN = [10, 20, 30, 50, 100];
   timePeriod = ['4 weeks', '6 months', 'Lifetime'];
   chosenPeriod = '6 months';
   modeChoice = 'top';
@@ -55,7 +56,7 @@ export class WelcomeComponent implements OnInit {
   };
   isSingleplayer = false;
   isMultiplayer = false;
-  hasFollowed = false;
+  hasFollowed = true;
 
   ngOnInit(): void {
     this.titleTagService.setTitle('Menu - Whisperify');
@@ -76,6 +77,7 @@ export class WelcomeComponent implements OnInit {
       excludeArtists: [],
       multChoice: false,
       choice: 'top',
+      questionN: 10,
     };
     const redirect = sessionStorage.getItem('redirect');
     if (redirect == 'analysis') {

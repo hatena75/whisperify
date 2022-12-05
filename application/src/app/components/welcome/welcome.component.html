@@ -5,19 +5,8 @@
       <div class="close-mod hoverhands" (click)="unLoad()">
         <img src="assets/close.svg" />
       </div>
-      <div *ngIf="hasFollowed && !playlistsLoaded" class="loading-div"></div>
-      <div *ngIf="!hasFollowed">
-        <div class="popup-title">
-          <h1>Select playlist...</h1>
-        </div>
-        <div>
-          Support the developer to create quizzes based on custom playlists!
-        </div><div class="actionBtn">
-        <a class="coffee twitter" (click)="followTwitter()" href="https://twitter.com/yihonganthony" target="_blank"
-          >Follow on Twitter</a
-        ></div>
-      </div>
-      <div *ngIf="hasFollowed && playlistsLoaded">
+      <div *ngIf="!playlistsLoaded" class="loading-div"></div>
+      <div *ngIf="playlistsLoaded">
         <div class="popup-title">
           <h1>Select playlist...</h1>
         </div>
@@ -173,6 +162,16 @@
         <select class="sel-option" [ngModel]="config.timeLimit" (change)="config.timeLimit = $event.target.value">
           <option *ngFor="let t of timeLimit" [value]="t">
             {{ t }} seconds
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="row-option">
+      <h2 class="h-option">The number of questions</h2>
+      <div class="right-option">
+        <select class="sel-option" [ngModel]="config.questionN" (change)="config.questionN = $event.target.value">
+          <option *ngFor="let t of questionN" [value]="t">
+            {{ t }}
           </option>
         </select>
       </div>

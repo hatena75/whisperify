@@ -135,7 +135,7 @@ export class QuizComponent implements OnInit {
               }
             }
           } else {
-            this.indexes = Array.from(Array(10).keys());
+            this.indexes = Array.from(Array(this.config['questionN']).keys());
           }
           this.data.currentSongList.subscribe((songList) => {
             this.trackopt = songList['tracks'];
@@ -195,7 +195,7 @@ export class QuizComponent implements OnInit {
                   // say there's not enough info
                   this.router.navigate(['/no-info']);
                 } else {
-                  while (this.indexes.length < 10) {
+                  while (this.indexes.length < this.config['questionN']) {
                     const temp = getRandomInt(this.tracks.length);
                     //console.log(this.tracks[temp]);
                     let unique = true;
@@ -292,7 +292,7 @@ export class QuizComponent implements OnInit {
               // say there's not enough info
               this.router.navigate(['/no-info']);
             } else {
-              while (this.indexes.length < 10) {
+              while (this.indexes.length < this.config['questionN']) {
                 const temp = getRandomInt(this.tracks.length);
                 let unique = true;
                 // check that the url has a preview_url
@@ -371,7 +371,7 @@ export class QuizComponent implements OnInit {
               // say there's not enough info
               this.router.navigate(['/no-info']);
             } else {
-              while (this.indexes.length < 10) {
+              while (this.indexes.length < this.config['questionN']) {
                 const temp = getRandomInt(this.tracks.length);
                 let unique = true;
                 // check that the url has a preview_url
@@ -416,7 +416,7 @@ export class QuizComponent implements OnInit {
   nextPage() {
     this.submitted = false;
     // checks if quiz is done
-    if (this.page >= 9) {
+    if (this.page >= this.config['questionN'] - 1) {
       sessionStorage.setItem('score', this.score.toString());
       if (this.challengeCode != '') {
         this.router.navigate(['/results', this.challengeCode]);

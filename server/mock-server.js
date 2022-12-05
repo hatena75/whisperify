@@ -31,8 +31,8 @@ app.use(cors()).use(cookieParser());
  * Please fill this in for the mock-server to function correctly.
  */
 // TODO: YOUR APP CLIENT ID AND SECRET HERE
-var client_id = "id";
-var client_secret = "secret";
+var client_id = "83596a7e51914abaad1a4f9766d7f0da";
+var client_secret = "79d8b977f835445286c180bc758a929b";
 // TODO: Your redirect uri as entered in your Spotify app
 var redirect_uri = "http://localhost:8888/callback/";
 var basePath = "http://localhost:4200"; // For the frontend, this is the default port for Angular
@@ -69,7 +69,7 @@ app.get("/login", function (req, res) {
 
   // redirects user to Spotify login page with scopes of information access
   var scope =
-    "user-read-private user-top-read playlist-read-private playlist-read-collaborative playlist-modify-public";
+    "user-read-private user-top-read playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read";
   res.redirect(
     "https://accounts.spotify.com/authorize?" +
       querystring.stringify({
